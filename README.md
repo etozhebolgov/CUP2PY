@@ -11,9 +11,9 @@ This tutorial will show how to use CUP2PY to create and manage Address Books and
 The library has the functionality to create and handle UPDATE and SEARCH requests, and convert them from string representations for communication to objects of dedicated classes and back. 
 The library also has the functionality to encrypt and decrypt local files with RSA private keys using AES algorithm.
 
-####The library does not contain functions for the actual network communication: sending and receiving the request strings, as well as actual messaging functionality. A different library can be used for that, such that 'socket'.
+#### The library does not contain functions for the actual network communication: sending and receiving the request strings, as well as actual messaging functionality. A different library can be used for that, such that 'socket'.
 
-###User Record
+### User Record
 
 The class `UserRecord` has four attributes:
 ```
@@ -39,7 +39,7 @@ bytes object - function `b64ToSignature(b64Signature)` is used.
 
 These attributes are stored as strings in Address Books (SQL tables).
 
-###Creation of new session object
+### Creation of new session object
 
 The library uses notion of sessions - this allows the user to choose a specific Address Book and User Record, and to create and handle requests using chosen Address Book and User Record without conflicts.
 
@@ -50,7 +50,7 @@ import cup2py
 s = cup2py.Session()
 ```
 
-###Setting `DatabaseName` and `chosenAddressBook` of the session
+### Setting `DatabaseName` and `chosenAddressBook` of the session
 
 Every session has these attributes:
 
@@ -77,7 +77,7 @@ s.createAddressBookInDatabase()
 ```
 Now we have created a database and an Address Book (SQL table) in it.
 
-###Generation of User Records
+### Generation of User Records
 The library allows to generate a new RSA keypair and create new object of a class `UserRecord` using this keypair
 with function `generateUser(localName, ip, path=os.getcwd())`.
 
@@ -99,7 +99,7 @@ We can also manually generate new RSA keypair:
 ```python
 generatedPrivateKey, generatedPublicKey = cup2py.generateUserKeyPair()
 ```
-###Set `chosenUserRecord` for the session
+### Set `chosenUserRecord` for the session
 All requests contain a list of hashes of public keys of users,
 which already received the request. This is done to minimise unnecessary
 flood in the network.
@@ -112,7 +112,7 @@ To set a User Record as default User Record for the session:
 ```python
 s.setUser(someUserRecord)
 ```
-###Get User Record from Address Book: by public key or by hash
+### Get User Record from Address Book: by public key or by hash
 To manually get a required User Record from Address Book by public key hash:
 ```python
 user = s.getUserByHash(publicKeyHashValue)
@@ -121,7 +121,7 @@ or by public key object:
 ```python
 user = s.getUser(publicKey)
 ```
-###Updating Address Book
+### Updating Address Book
 To update or add a new User Record in the Address Book of the session: 
 
 ```python
@@ -133,21 +133,21 @@ in the Address Book, or add a new one otherwise.
 This function verifies the digital signature of the record and returns the User Record
 if it was updated, or `False` otherwise.
 
-###New UPDATE Request
+### New UPDATE Request
 To create a new UPDATE request:
 ```python
 someUpdateRequest = newUpdateRequest(someUserRecord, updateDepth=3)
 ```
 This will generate new UPDATE request with given User Record and 'recursion depth' 3. 
 
-###New SEARCH Request
+### New SEARCH Request
 To create a new SEARCH request:
 ```python
 someSearchRequest = newSearchRequest(searchedPublicKeyHash, senderUserRecord, searchDepth=7)
 ```
 This will generate new SEARCH request with given sender's User Record, searched public key hash and 'recursion depth' 7. 
 
-###Prepare UPDATE Requests and SEARCH Requests for sending - string form and list of IP addresses
+### Prepare UPDATE Requests and SEARCH Requests for sending - string form and list of IP addresses
 For transmission purposes, UPDATE and SEARCH requests can be represented in their string form.
 
 **Standard form for UPDATE request:**
@@ -181,7 +181,7 @@ anotherSearchRequestToSend, anotherIpList = searchToSend(someSearchRequest, ipLi
 ```
 This way request can be generated even if the `chosenAddressBook` and `databaseName` hasn't been defined.
 
-###Request Handling
+### Request Handling
 To handle and process received UPDATE and SEARCH requests there is a function `requestHandler(message)`.
 This function receives a request string, identifies the type of request (UPDATE or SEARCH) and processes it.
 
