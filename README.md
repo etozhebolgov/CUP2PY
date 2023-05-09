@@ -230,7 +230,7 @@ handledSearchRequest = s.requestHandler(f'SEARCH;'
                  f'[{stringCheckedHash_1}, ...]')
 ```
 
-###E ncryption of local private key files
+### Encryption of local private key files
 
 **TO BE ADDED**
 
