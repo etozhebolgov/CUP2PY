@@ -4,7 +4,7 @@ Proof-of-concept for decentralised protocol for peer-to-peer (P2P) communication
 
 ## Theory
 
-Theory behind the project and detailed description of the communication protocol is in this paper: **PAPER!!!**
+Theory behind the project and detailed description of the communication protocol is in this paper: **TO BE ADDED**
 
 ## Functionality & Tutorial
 This tutorial will show how to use CUP2PY to create and manage Address Books and User Records, how to create User Records from RSA public/private key pairs and generate the RSA key pairs. 
@@ -230,6 +230,8 @@ handledSearchRequest = s.requestHandler(f'SEARCH;'
                  f'[{stringCheckedHash_1}, ...]')
 ```
 
-###Encryption of local private key files
+###E ncryption of local private key files
+
+**TO BE ADDED**
 
 #### For further work with this library (sending and receiving the requests, chats between users) the use of network libraries (such as socket) is required.
