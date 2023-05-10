@@ -260,6 +260,17 @@ handledSearchRequest = s.requestHandler(f'SEARCH;'
                  f'[{stringCheckedHash_1},{stringCheckedHash_2},...]')
 ```
 
+Because the function `requestHandler` can output a list of tuples (UPDATE and SEARCH), a tuple or `None`, the best practice to use it would be:
+```python
+handlingResult = s.requestHandler(someString)
+if handlingResult:  # checks if the output is not None
+   if type(handlingResult) == list:  # if there is a list of tuple outputs
+      someFunction(handlingResult[0])
+      someFunction(handlingResult[1])
+   else:
+      someFunction(handlingResult)  # if there is a single tuple output
+```
+
 ### Encryption of local private key files
 
 The library also have functionality to encrypt and decrypt local files with private keys. To do that, we created another library - AESDemo.
