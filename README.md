@@ -154,14 +154,14 @@ if it was updated, or `False` otherwise.
 ### New UPDATE Request
 To create a new UPDATE request:
 ```python
-someUpdateRequest = newUpdateRequest(someUserRecord, updateDepth=3)
+someUpdateRequest = cup2py.newUpdateRequest(someUserRecord, updateDepth=3)
 ```
 This will generate new UPDATE request with given User Record and 'recursion depth' 3. 
 
 ### New SEARCH Request
 To create a new SEARCH request:
 ```python
-someSearchRequest = newSearchRequest(searchedPublicKeyHash, senderUserRecord, searchDepth=7)
+someSearchRequest = cup2py.newSearchRequest(searchedPublicKeyHash, senderUserRecord, searchDepth=7)
 ```
 This will generate new SEARCH request with given sender's User Record, searched public key hash and 'recursion depth' 7. 
 
@@ -179,12 +179,12 @@ SEARCH;<SearchedPublicKeyHash>;<SenderStringPublicKey>;<SenderIP>;<SenderUpdateD
 
 To get the string representation for UPDATE requests and list of IP addresses of users to send:
 ```python
-someUpdateRequestToSend, someIpList = updateToSend(someUpdateRequest)
+someUpdateRequestToSend, someIpList = cup2py.updateToSend(someUpdateRequest)
 ```
 
 To get the string representation for SEARCH requests and list of IP addresses of users to send:
 ```python
-someSearchRequestToSend, someIpList = searchToSend(someSearchRequest)
+someSearchRequestToSend, someIpList = cup2py.searchToSend(someSearchRequest)
 ```
 
 The functions return tuples in a form `(updateRequestToSend, ipList)` or `(searchRequestToSend, ipList)`
@@ -192,10 +192,10 @@ where `ipList` is a list containing all IP addresses stored in default Address B
 
 If there is a specific `ipList` user wants to use:
 ```python
-anotherUpdateRequestToSend, anotherIpList = updateToSend(someUpdateRequest, ipList)
+anotherUpdateRequestToSend, anotherIpList = cup2py.updateToSend(someUpdateRequest, ipList)
 ```
 ```python
-anotherSearchRequestToSend, anotherIpList = searchToSend(someSearchRequest, ipList)
+anotherSearchRequestToSend, anotherIpList = cup2py.searchToSend(someSearchRequest, ipList)
 ```
 This way request can be generated even if the `chosenAddressBook` and `databaseName` hasn't been defined.
 
