@@ -179,12 +179,12 @@ SEARCH;<SearchedPublicKeyHash>;<SenderStringPublicKey>;<SenderIP>;<SenderUpdateD
 
 To get the string representation for UPDATE requests and list of IP addresses of users to send:
 ```python
-someUpdateRequestToSend, someIpList = cup2py.updateToSend(someUpdateRequest)
+someUpdateRequestToSend, someIpList = s.updateToSend(someUpdateRequest)
 ```
 
 To get the string representation for SEARCH requests and list of IP addresses of users to send:
 ```python
-someSearchRequestToSend, someIpList = cup2py.searchToSend(someSearchRequest)
+someSearchRequestToSend, someIpList = s.searchToSend(someSearchRequest)
 ```
 
 The functions return tuples in a form `(updateRequestToSend, ipList)` or `(searchRequestToSend, ipList)`
@@ -192,10 +192,10 @@ where `ipList` is a list containing all IP addresses stored in default Address B
 
 If there is a specific `ipList` user wants to use:
 ```python
-anotherUpdateRequestToSend, anotherIpList = cup2py.updateToSend(someUpdateRequest, ipList)
+anotherUpdateRequestToSend, anotherIpList = s.updateToSend(someUpdateRequest, ipList)
 ```
 ```python
-anotherSearchRequestToSend, anotherIpList = cup2py.searchToSend(someSearchRequest, ipList)
+anotherSearchRequestToSend, anotherIpList = s.searchToSend(someSearchRequest, ipList)
 ```
 This way request can be generated even if the `chosenAddressBook` and `databaseName` hasn't been defined.
 
