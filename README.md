@@ -270,6 +270,7 @@ if handlingResult:  # checks if the output is not None
    else:
       someFunction(handlingResult)  # if there is a single tuple output
 ```
+Here `someFunction()` takes UPDATE or SEARCH requests with `ipList` for further processing (most obvious example - to directly send requests to given IP addresses). 
 
 ### Encryption of local private key files
 
