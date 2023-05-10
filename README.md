@@ -109,7 +109,7 @@ cup2py.generateUser('<localName>', '8.8.8.8')
 We can also create a new User Record from already existing RSA keypair.
 Here we are loading the keypair files `<localName>_publicKey.pem` and `<localName>_privateKey.pem` and creating new User Record from them with IP address `8.8.8.8`.
 ```python
-pub, priv = cup2py.loadPublicKey('<localName>'), cup2py.loadPrivateKey('<localName>')
+priv, pub = cup2py.loadPrivateKey('<localName>'), cup2py.loadPublicKey('<localName>')
 user = cup2py.userRecordFromKeyPair(priv, pub, '8.8.8.8')
 ```
 
