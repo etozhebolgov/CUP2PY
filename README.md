@@ -199,9 +199,16 @@ anotherSearchRequestToSend, anotherIpList = s.searchToSend(someSearchRequest, ip
 ```
 This way request can be generated even if the `chosenAddressBook` and `databaseName` hasn't been defined.
 
+### Convert string representation of the request to the object of a suitable class
+To do that:
+```python
+someRequest = cup2py.getRequest(message)
+```
+This function identifies the the type of request and returns it as an object of a suitable class.
+
 ### Request Handling
 To handle and process received UPDATE and SEARCH requests there is a function `requestHandler(message)`.
-This function receives a request string, identifies the type of request (UPDATE or SEARCH) and processes it.
+This function receives a request string, identifies the type of request (UPDATE or SEARCH) using function `getRequest(message)` and processes it.
 
 For UPDATE requests:
 1) Converts given string into the object of class `UpdateRecord`
