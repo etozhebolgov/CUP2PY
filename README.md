@@ -263,6 +263,7 @@ handledSearchRequest = s.requestHandler(f'SEARCH;'
 ### Encryption of local private key files
 
 The library also have functionality to encrypt and decrypt local files with private keys. To do that, we created another library - AESDemo.
+This library uses algorithm AES (Advanced Encryption Standard).
 
 To encrypt a private key file with name <localName>_privateKey.pem:
 ```python
