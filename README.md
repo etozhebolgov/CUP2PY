@@ -260,7 +260,7 @@ handledSearchRequest = s.requestHandler(f'SEARCH;'
                  f'[{stringCheckedHash_1},{stringCheckedHash_2},...]')
 ```
 ### Important remark about `requestHandler()` function
-Because the function `requestHandler` can output a list of tuples `[(updateRequestWithFoundUserRecord, [senderIp]), (searchRequestToSend, ipList)]`, a tuple (for example `(updateRequest, ipList)` or `None`, the best practice to use it would be:
+Because the function `requestHandler` can output a list of tuples: for example `[(updateRequestWithFoundUserRecord, [senderIp]), (searchRequestToSend, ipList)]`, a tuple: for example `(updateRequest, ipList)` or `None`, the best practice to use it would be:
 ```python
 handlingResult = s.requestHandler(someString)
 if handlingResult:  # checks if the output is not None
