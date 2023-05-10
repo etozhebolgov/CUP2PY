@@ -262,6 +262,18 @@ handledSearchRequest = s.requestHandler(f'SEARCH;'
 
 ### Encryption of local private key files
 
-**TO BE ADDED**
+The library also have functionality to encrypt and decrypt local files with private keys. To do that, we created another library - AESDemo.
+
+To encrypt a private key file with name <localName>_privateKey.pem:
+```python
+   cup2py.encryptPrivateKey(localName, password)
+```
+   
+To decrypt a private key file with name <localName>_privateKey.pem:
+```python
+   cup2py.decryptPrivateKey(localName, password)
+```
+   
+**The password should be at least 16 symbols long!**
 
 #### For further work with this library (sending and receiving the requests, chats between users) the use of network libraries (such as socket) is required.
