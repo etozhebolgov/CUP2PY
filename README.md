@@ -233,7 +233,7 @@ handledUpdateRequest = s.requestHandler(f"UPDATE;"
                                  f"{stringUpdateDate};"
                                  f"{stringDigitalSignature};"
                                  f"{stringUpdateDepth};"
-                                 f"[{updatedHash_1}, ...]")
+                                 f"[{updatedHash_1},{updatedHash_2},...]")
 ```
 
 For SEARCH requests:
@@ -257,7 +257,7 @@ handledSearchRequest = s.requestHandler(f'SEARCH;'
                  f'{stringSenderUpdateDate};'
                  f'{stringSenderDigitalSignature};'
                  f'{stringSearchDepth};'
-                 f'[{stringCheckedHash_1}, ...]')
+                 f'[{stringCheckedHash_1},{stringCheckedHash_2},...]')
 ```
 
 ### Encryption of local private key files
