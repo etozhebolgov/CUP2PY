@@ -457,8 +457,6 @@ def Round_Key_Value(matrix_RKV):
     The function Round_Key_Value takes a 4x4 list (matrix_RKV) and outputs a list
     of 11 4x4 lists (mat_rkv)
     The purpose of the function is to expand the input 4x4 list by the AES Key expansion algoritm.
-
-    Do I add any more information here????
     """
     List_Rcon = [0,1,2,4,8,16,32,64,128,27,54]
     matrix_rm_rkv = Rotate_Matrix(matrix_RM=matrix_RKV)
@@ -564,7 +562,7 @@ def integer_multiplication_XOR(integer_fixed_m_m_XOR,integer_temporary_m_m_XOR):
     return integer_m_m_XOR
 
 
-def AES_Encrypt_unformatted(Plainmatrix,Key):
+def AES_Encrypt_unformatted(Plainmatrix, Key):
     """
     The AES_Encrypt_unformatted takes a 4x4 list of integers (Plainmatrix) and a 4x4 list (AES key Key)
     and returns a 4x4 list of integers (mat_aes_encrypt_unformatted).
@@ -583,7 +581,7 @@ def AES_Encrypt_unformatted(Plainmatrix,Key):
     mat_aes_encrypt_unformatted = After_Round_Key_Value(matrix_ARKV=matrix_temporary_aes_encrypt_unformatted, matrix_RKV_m=mat_rk_e[10])
     return mat_aes_encrypt_unformatted
 
-def AES_Decrypt_unformatted(Ciphermatrix,Key):
+def AES_Decrypt_unformatted(Ciphermatrix, Key):
     """
     The AES_Decrypt_unformatted takes a 4x4 list of integers (Ciphermatrix) and 4x4 list (AES key Key)
     and returns a 4x4 list of integers (mat_aes_decrypt_unformatted).
@@ -600,43 +598,22 @@ def AES_Decrypt_unformatted(Ciphermatrix,Key):
     return mat_aes_decrypt_unformatted
 
 
-def format_initial (string, bool_key):
+def format_string_2_4x4_matrices (string_F_S_2_4x4_M):
     """
-    The function format_intial takes a string (string) and returns a list of 4 lists
-    (matrix_before, matrix_during, matrix_after, list_of_string)
+    The function format_intial takes a string (string) and returns a list of 4x4 lists
+    (matrix_string_F_S_2_4x4_M)
 
-    The purpose of the function is to create a list of 4 lists each a list containing the same number
-    of 4x4 lists with that number dependent on the length of the input string.
-    The first 3 lists are empty strings and the fourth list contains the a list of 4x4 lists with each
-    element of each list being a unique character from the string string.
+    The purpose of the function is to take a string and convert it into a list of 4x4 lists
+    where each element is an intger
     """
-    length_string = len(string)
-    integer_temp_f_i = ((-length_string) %16)
+    length_string_F_S_2_4x4_M = len(string_F_S_2_4x4_M)
+    integer_temp_f_i = ((-length_string_F_S_2_4x4_M) %16)
     for i in range(integer_temp_f_i):
-        string += '@'
-    number_of_matricies = int(len(string)/16)
-    matrix_before = []
-    list_of_string = []
-    matrix_during = []
-    matrix_after = []
+        string_F_S_2_4x4_M += '@'
+    number_of_matricies = int(len(string_F_S_2_4x4_M)/16)
+    matrix_string_F_S_2_4x4_M = []
     for i in range(number_of_matricies):
-        list_of_string.append(string[16*i:16*(i+1)])
-        matrix_before.append([
-                ['','','',''],
-                ['','','',''],
-                ['','','',''],
-                ['','','',''],
-            ]
-        )
-        if bool_key == 0:
-            matrix_during.append([
-                ['','','',''],
-                ['','','',''],
-                ['','','',''],
-                ['','','',''],
-            ]
-            )
-            matrix_after.append([
+        matrix_string_F_S_2_4x4_M.append([
                 ['','','',''],
                 ['','','',''],
                 ['','','',''],
@@ -645,43 +622,43 @@ def format_initial (string, bool_key):
         )
         for j in range(4):
             for k in range(4):
-                matrix_before[i][k][j] = dictionary_letters_to_base_256[list_of_string[i][4*j+k]]
-    return [matrix_before, matrix_during, matrix_after]
+                matrix_string_F_S_2_4x4_M[i][k][j] = dictionary_letters_to_base_256[string_F_S_2_4x4_M[16*i+4*j+k]]
+    return matrix_string_F_S_2_4x4_M
 
-def format_middle(matrix_FM, Key, bool_encrypt):
-    """"
-    The function format_middle takes a list of 4 lists (matrix_FM), a 4x4 list (AES key Key) and
-    a boolean (bool_encrypt) and returns a list (matrix_FM[2])
-
-    I don't know how to explain the purpose of this function!
+def format_AES(matrix_F_AES, Key, bool_encrypt):
     """
+    The function format_middle takes a list of 4x4 integer lists (matrix_F_AES), a 4x4 list (AES key Key) and
+    a boolean (bool_encrypt) and returns a list of 4x4 integer lists (matrix_fm)
 
-    length_matrix_fm_0 = len(matrix_FM[0])
-    for i in range(length_matrix_fm_0):
-        if bool_encrypt:
-            matrix_FM[1][i] = AES_Encrypt_unformatted(Plainmatrix=matrix_FM[0][i], Key=Key)
-        else:
-            matrix_FM[1][i] = AES_Decrypt_unformatted(Ciphermatrix=matrix_FM[0][i], Key=Key)
+    The purpose of this function is to take a list of 4x4 integer lists and either encrypts or decrypts them
+    with the 4x4 list (AES key), depending on the boolean bool_encrypt.
+    bool_encrypt is 0 for decryption and 1 for encryption.
+    """
+    length_matrix_F_AES = len(matrix_F_AES)
+    matrix_f_AES = []
+    if bool_encrypt:
+        for i in range(length_matrix_F_AES):
+            matrix_f_AES.append(AES_Encrypt_unformatted(Plainmatrix=matrix_F_AES[i], Key=Key))
+    else:
+        for i in range(length_matrix_F_AES):
+            matrix_f_AES.append(AES_Decrypt_unformatted(Ciphermatrix=matrix_F_AES[i], Key=Key))
+    return matrix_f_AES
+
+def format_4x4_matricies_2_string(matrix_F_4x4_M_2_S):
+    """
+    The function format_final takes a list of 4x4 lists of integer characters (matrix_F_4x4_M_2_S) and returns a
+    string (string_f_4x4_m_2_s).
+
+    The purpose of the function is to take a list of 4x4 list of integer characters and add those string
+    characters together and return a string.
+    """
+    length_matrix_F_4x4_M_2_S = len(matrix_F_4x4_M_2_S)
+    string_f_4x4_m_2_s = ''
+    for i in range(length_matrix_F_4x4_M_2_S):
         for j in range(4):
             for k in range(4):
-                matrix_FM[2][i][k][j] = List_base_256_to_letters[matrix_FM[1][i][k][j]]
-    return matrix_FM[2]
-
-def format_final(matrix_FF):
-    """
-    The function format_final takes a list of 4x4 lists of string characters (matrix_FF) and returns a
-    string (after_string).
-
-    The purpose of the function is to take a list of 4x4 list of string characters and add those string
-    characters together and return that string.
-    """
-    length_matrix_FF = len(matrix_FF)
-    after_string = ''
-    for i in range(length_matrix_FF):
-        for j in range(4):
-            for k in range(4):
-                after_string += matrix_FF[i][k][j]
-    return after_string
+                string_f_4x4_m_2_s += List_base_256_to_letters[matrix_F_4x4_M_2_S[i][k][j]]
+    return string_f_4x4_m_2_s
 
 def format_final_decrypt(string_format_final):
     """
@@ -723,30 +700,40 @@ def input_checker(Input_text):
 
 def format(Input_text, Key, bool_encrypt):
     """
-    The function function takes a string (Input_text), 4x4 list (AES key Key) and boolean (bool_encrypt) and
-    returns a string (matrix_format_final)
+    The function format takes a string (Input_text), 4x4 list (AES key Key) and boolean (bool_encrypt) and
+    returns a string (string_format_final)
 
-    This function just combines all 3 formatting functions - I really need help explaining this!
+    This function converts a string into a list of 4x4 matricies, encrypts or decrypts those lists with the
+    given AES key and then coverts the 4x4 matricies back into a string
     """
-    matrix_format_initial = format_initial(string=Input_text,bool_key=0)
-    matrix_format_middle = format_middle(matrix_FM=matrix_format_initial, Key=Key, bool_encrypt=bool_encrypt)
-    matrix_format_final = format_final(matrix_FF=matrix_format_middle)
-    return(matrix_format_final)
+    matrix_format_initial = format_string_2_4x4_matrices(string_F_S_2_4x4_M=Input_text)
+    matrix_format_middle = format_AES(matrix_F_AES=matrix_format_initial, Key=Key, bool_encrypt=bool_encrypt)
+    string_format_final = format_4x4_matricies_2_string(matrix_F_4x4_M_2_S=matrix_format_middle)
+    return(string_format_final)
     
-def Keys(string_K):
-    if len(string_K) < 16:
+def Key_String_2_4x4_Matrix(string_K_S_2_4x4_M):
+    """
+    The function Key_String_2_4x4_matrix takes a string (string_K_S_2_4x4_M) and returns a either a 4x4 list (Key)
+    or a string (string_K_S_2_4x4_M)
+    If the string has less than 16 characters or if there are any characters in the string not in the dictionary
+    dictionary_letters_to_base_256, then the function returns string.
+    Else it returns the list (Key)
+
+    The purpose of the function is to turn a string into a 4x4 list for an AES Key.
+    """
+    if not type(string_K_S_2_4x4_M) == str:
+        string_K_S_2_4x4_M = "Key needs to be a string"
+        return string_K_S_2_4x4_M
+    if len(string_K_S_2_4x4_M) < 16:
         print("Key needs to be at least 16 characters")
-        return string_K
-    string_K = string_K[:16]
-    Key = input_checker(Input_text=string_K)
+        return string_K_S_2_4x4_M
+    string_K_S_2_4x4_M = string_K_S_2_4x4_M[:16]
+    Key = input_checker(Input_text=string_K_S_2_4x4_M)
     if type(Key) == list:
-        return Key[0]
-    Key = format_initial(string=Key, bool_key=1)[0][0]
+        return string_K_S_2_4x4_M
+    Key = format_string_2_4x4_matrices(string_F_S_2_4x4_M=Key)[0]
     return Key
     
-
-
-
 def AES_Encrypt(Plaintext, Key):
     """
     The function AES_Encrypt takes a string (Plaintext) and a AES key (Key) and returns a string.
@@ -754,7 +741,7 @@ def AES_Encrypt(Plaintext, Key):
     The purpose of the function is to encrypt the input string with AES encryption with the given AES key.
     """
     Plaintext = input_checker(Input_text=Plaintext)
-    Key = Keys(string_K=Key)
+    Key = Key_String_2_4x4_Matrix(string_K_S_2_4x4_M=Key)
     if type(Plaintext) == list:
         return Plaintext[0]
     
@@ -770,7 +757,7 @@ def AES_Decrypt(Ciphertext, Key):
     The purpose of the function is to decrypt the input string with AES decryption with the given AES key.
     """
     Ciphertext = input_checker(Input_text=Ciphertext)
-    Key = Keys(string_K=Key)
+    Key = Key_String_2_4x4_Matrix(string_K_S_2_4x4_M=Key)
     if type(Ciphertext) == list:
         return Ciphertext[0]
     
@@ -782,12 +769,19 @@ def AES_Decrypt(Ciphertext, Key):
 
 def AES_Encrypt_Decrypt_file(Filename, Key, bool_encrypt):
     """
-    Hasn't got a Docstring yet!
-    """
+    The function AES_Encrypt_Decrypt_file takes 2 strings (Filename and Key) and a boolean (bool_encrypt)
+    and does not return anything.
 
-    with open(Filename,'r', encoding='utf-8') as f:
-        input_text = f.read()
-        f.close()
+    The purpose of the function is to encrypt or decrypt the file with the name (Filename) with the given
+    AES key string (Key).
+    """
+    try:
+        with open(Filename,'r', encoding='utf-8') as f:
+            input_text = f.read()
+            f.close()
+    except FileNotFoundError:
+        print("File not found, please type the file name correctly or create the file")
+        return
 
     if bool_encrypt:
         output_text = AES_Encrypt(Plaintext=input_text, Key=Key)
@@ -797,3 +791,9 @@ def AES_Encrypt_Decrypt_file(Filename, Key, bool_encrypt):
     with open(Filename,'w', encoding='utf-8') as f:
         f.write(output_text)
         f.close()
+
+    if bool_encrypt and not(output_text==input_text):
+        print("{} successfully encrypted".format(Filename))
+        return
+    if not(bool_encrypt) and not(output_text==input_text) :
+        print("{} successfully decrypted".format(Filename))
