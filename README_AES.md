@@ -2,10 +2,6 @@
 #### Lucy Betts, Ilia Bolgov, Jodie Furnell, Annabel May
 A recreation of the Advanced Encryption Standard (AES), formally known as Rijndael.
 
-## Theory
-
-Theory behind the project and detailed description of the communication protocol is in this paper: **TO BE ADDED**
-
 ## Key ideas
 
 The key idea of AES was to have a new encryption standard, to keep up with developing technology. Multiple entries for what could have been AES was submitted, but Rijndael was seen to be the best balance between, speed, security and size.
