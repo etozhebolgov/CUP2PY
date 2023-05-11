@@ -1,6 +1,7 @@
 # CUP2PY
 #### Lucy Betts, Ilia Bolgov, Jodie Furnell, Annabel May
 Proof-of-concept for decentralised protocol for peer-to-peer (P2P) communication.
+
 Project for Cardiff University Computing For Mathematics module.
 
 ## Theory
