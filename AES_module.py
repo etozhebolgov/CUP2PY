@@ -723,6 +723,7 @@ def Key_String_2_4x4_Matrix(string_K_S_2_4x4_M):
     """
     if not type(string_K_S_2_4x4_M) == str:
         string_K_S_2_4x4_M = "Key needs to be a string"
+        print("Key needs to be a string")
         return string_K_S_2_4x4_M
     if len(string_K_S_2_4x4_M) < 16:
         print("Key needs to be at least 16 characters")
