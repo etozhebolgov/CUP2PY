@@ -37,4 +37,28 @@ Step 3 shifting rows, although this time, is right instead of left, but the byte
 Step 4 un-substituting all the bytes from the lookup table<br />
 Step 5, Go to step 1 again
 
+## Functions and their uses
+
+**Sub_Bytes** The function that does the substituion part of AES, with inputs of the data matrix, and a boolean saying whether to encrypt or decrypt<br />
+**Rotate_Rows** The function that does the shift rows part of AES, with inputs of the data matrix, and a boolean saying whether to encrypt or decrypt<br />
+**Mix_Columns** The function that mixes the columns by multiplying the data matrix with the encryption/decryption matrix which mixes columns, with inputs of the data matrix, and a boolean saying whether to encrypt or decrypt<br />
+**Round_Key_Value** Takes in the 4x4 Key Matrix, and computes and outputs 11 4x4 round keys<br />
+**After_Round_Key_Valye** XORs 2 4x4 matrices and outputs the result matrix<br />
+**HEX** Takes a 4x4 matrix in decimal and outputs it in a Hexdecimal 4x4 matrix<br />
+**Rotate_Matrix** Inputs a 4x4 matrix and swaps the rows and columns around<br />
+**interger_multiplication_XOR** a function that does the Galois Feild Multiplication<br />
+**AES_Encrypt_unformatted** The purpose of the function is to encrypt the 4x4 list (Plainmatrix) with the AES encryption key (Key) using the algorithm for AES encryption.<br /> 
+**AES_Decrypt_unformatted** The purpose of the function is to decrypt the 4x4 list (Ciphermatrix) with the AES encryption key (Key) using the algorithm for AES decryption.<br /> 
+**format_string_2_4x4_matrices** The purpose of the function is to take a string and convert it into a list of 4x4 lists where each element is an intger<br />
+**format_AES** The purpose of this function is to take a list of 4x4 integer lists and either encrypts or decrypts them with the 4x4 list (AES key), depending on the boolean bool_encrypt.
+bool_encrypt is 0 for decryption and 1 for encryption.<br />
+**format_4x4_matricies_2_string** The purpose of the function is to take a list of 4x4 list of integer characters and add those string characters together and return a string.<br />
+**format_final_decrypt** The purpose of the function is to remove any '@' from the end of the input string.<br />
+**input_checker** The purpose of the function is to check if the input string is empty or if there are any characters in the string not in the dictionary dictionary_letters_to_base_256. It returns a list with the input string if that is the case, otherwise it returns the input string.<br />
+**format** This function converts a string into a list of 4x4 matricies, encrypts or decrypts those lists with the given AES key and then coverts the 4x4 matricies back into a string<br />
+**Key_String_2_4x4_Matrix** The purpose of the function is to turn a string into a 4x4 list for an AES Key.<br />
+**AES_Encrypt** The purpose of the function is to encrypt the input string with AES encryption with the given AES key.<br />
+**AES_Decrypt** The purpose of the function is to decrypt the input string with AES decryption with the given AES key.<br />
+**AES_Encrypt_Decrypt_file** The purpose of the function is to encrypt or decrypt the file with the name (Filename) with the given AES key string (Key).<br />
+
 
