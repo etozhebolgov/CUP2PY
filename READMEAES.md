@@ -29,12 +29,12 @@ Step 3 is mixing comlumns, this is done by multiplying the matrix of data, in Ga
 Step 4 Adding the key. Each cycle, the round key is different, in order to strenghten the encryption, The round key is derieved from the original key. The round key is added to the data matrix using XOR bitwise, aka addition within the same Galois field
 Step 5, Go to to step 1 again
 
-AES decryption is the exact opposite of the encryption
-Round 1 only has everything except inverse mix columns, and the final round only has subtraction of the round key. There are 10 rounds again.
-Step 1 Subtracting the round key. As subtraction and addition is the same within this galois feild, is the same as before, being XOR, the only thing that changes is that the round keys are in the opposite order
-Step 2, mixing of columns, there is an inverse matrix within this Galois feild, that can be used to undo this step, the rows being (14 11 13 9),(9 14 11 13),(13 9 14 11),(11 13 9 14), is multiplied with the encrypted matrix
-Step 3 shifting rows, although this time, is right instead of left, but the bytes that go off the right side still loop around to the left side
-Step 4 un-substituting all the bytes from the lookup table
+AES decryption is the exact opposite of the encryption<br />
+Round 1 only has everything except inverse mix columns, and the final round only has subtraction of the round key. There are 10 rounds again.<br />
+Step 1 Subtracting the round key. As subtraction and addition is the same within this galois feild, is the same as before, being XOR, the only thing that changes is that the round keys are in the opposite order<br />
+Step 2, mixing of columns, there is an inverse matrix within this Galois feild, that can be used to undo this step, the rows being (14 11 13 9),(9 14 11 13),(13 9 14 11),(11 13 9 14), is multiplied with the encrypted matrix<br />
+Step 3 shifting rows, although this time, is right instead of left, but the bytes that go off the right side still loop around to the left side<br />
+Step 4 un-substituting all the bytes from the lookup table<br />
 Step 5, Go to step 1 again
 
 
