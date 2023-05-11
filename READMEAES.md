@@ -14,4 +14,7 @@ Rijndael, aka AES. Works by grouping sections of 16 bytes, and putting it into a
 Encrypting each 4x4 matrix of 16 bytes together, makes it much more secure than previous, for example, its more secure than the famous enigma, due to enigma encrypting one piece of information at a time.
 Rijndael then encrypts each 4x4 by doing a bunch of cycles of matrix calculations in galois field $GF(2^8)$, and shufles.
 
-Galois field is
+Galois theory, is number theory working in a limited finite set of numbers, in this Galois feild $GF(2^8)$ (256 numbers) is what we will be using for all our matrix calculations. 
+This allows the numbers loop around, so never goes outside the range, to be easily stored as bytes. 
+Galois feilds is isometric and commutable, which means it can be reversed and we wont have to worry about order of numbers
+
