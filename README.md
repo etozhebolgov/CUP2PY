@@ -276,7 +276,7 @@ Here `someFunction()` takes UPDATE or SEARCH requests with `ipList` for further 
 
 ### Encryption of local private key files
 
-The library also have functionality to encrypt and decrypt local files with private keys. To do that, we created another library - AESDemo.
+The library also have functionality to encrypt and decrypt local files with private keys. To do that, we created another library - AES_module.
 This library uses algorithm AES (Advanced Encryption Standard).
 
 To encrypt a private key file with name <localName>_privateKey.pem:
