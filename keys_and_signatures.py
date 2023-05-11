@@ -1,7 +1,7 @@
 import rsa
 from base64 import b64encode, b64decode
 import hashlib
-import AESDemo #  also part of the project
+import AES_module #  also part of the project
 
 def generateKeys(publicName, privateName):
     """
@@ -133,7 +133,7 @@ def encryptPrivateKey(localName, password):
     :param password: At least 16 symbols.
     :return:
     """
-    AESDemo.AES_Encrypt_Decrypt_file(localName + '_privateKey.pem', password, True)
+    AES_module.AES_Encrypt_Decrypt_file(localName + '_privateKey.pem', password, True)
 
 
 def decryptPrivateKey(localName, password):
@@ -143,5 +143,5 @@ def decryptPrivateKey(localName, password):
     :param password: At least 16 symbols.
     :return:
     """
-    AESDemo.AES_Encrypt_Decrypt_file(localName + '_privateKey.pem', password, False)
+    AES_module.AES_Encrypt_Decrypt_file(localName + '_privateKey.pem', password, False)
 
