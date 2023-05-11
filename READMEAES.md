@@ -1,4 +1,4 @@
-# CUAES
+# AESDemo
 #### Lucy Betts, Ilia Bolgov, Jodie Furnell, Annabel May
 A recreation of the Advanced Encryption Standard (AES), formally known as Rijndael.
 
