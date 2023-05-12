@@ -6,7 +6,7 @@ Project for Cardiff University Computing For Mathematics module.
 
 ## Theory
 
-Theory behind the project and detailed description of the communication protocol is in this [paper](CUP2PY Paper.pdf).
+Theory behind the project and detailed description of the communication protocol is in this [paper](CUP2PY_paper.pdf).
 
 ## Key ideas
 
@@ -278,7 +278,7 @@ Here `someFunction()` takes an UPDATE or SEARCH request with `ipList` for furthe
 
 The library also has the functionality to encrypt and decrypt local files with Advanced Encryption Standard (AES) Encryption. To do that, we created another library - AES_module.
 
-[Documentation for that library](AES_module.md)
+[Documentation for that library](README_AES.md)
 
 To encrypt a private key file with the name <localName>_privateKey.pem:
 ```python
