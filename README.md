@@ -2,6 +2,8 @@
 #### Lucy Betts, Ilia Bolgov, Jodie Furnell, Annabel May
 Proof-of-concept for decentralised protocol for peer-to-peer (P2P) communication.
 
+Project for Cardiff University Computing For Mathematics module.
+
 ## Theory
 
 Theory behind the project and detailed description of the communication protocol is in this paper: **TO BE ADDED**
@@ -274,7 +276,7 @@ Here `someFunction()` takes UPDATE or SEARCH requests with `ipList` for further 
 
 ### Encryption of local private key files
 
-The library also have functionality to encrypt and decrypt local files with private keys. To do that, we created another library - AESDemo.
+The library also have functionality to encrypt and decrypt local files with private keys. To do that, we created another library - AES_module.
 This library uses algorithm AES (Advanced Encryption Standard).
 
 To encrypt a private key file with name <localName>_privateKey.pem:
